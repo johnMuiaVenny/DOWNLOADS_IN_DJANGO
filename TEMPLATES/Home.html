@@ -1,0 +1,27 @@
+<br/><center><h1>FILES</h1></center><br/>
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>FILE TITLE: </label>
+    <input type="text" name="title" placeholder="TITLE"/><br/><br/>
+    <label>PDF FILE: </label>
+    <input type="file" name="pdf" placeholder=""/><br/><br/>
+    <label>COVER PAGE: </label>
+    <input type="file" name="cover" placeholder=""/><br/><br/>
+
+    <input type="submit" /><br/>
+</form>
+
+<br><br>
+
+{% for Display in Display %}
+
+<h2>{{Display.Title}}</h2>
+<a href="{{Display.File.url}}"><img style="width: 10%;" src="{{Display.Cover.url}}"></a>
+<button><a href="{{Display.File.url}}">Read Book</a></button>
+<button><a href="{{Display.File.url}}" download>Download</a></button>
+
+
+{% endfor %}
